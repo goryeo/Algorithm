@@ -1,41 +1,28 @@
 def solution(answers):
     
-    a = [1, 2, 3, 4, 5]
-    b = [2, 1, 2, 3, 2, 4, 2, 5]
-    c = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5]
-    count = {}
-    temp = []
+    a = [1,2,3,4,5]
+    b = [2,1,2,3,2,4,2,5]
+    c = [3,3,1,1,2,2,4,4,5,5]
+    score = [0, 0, 0]
+    result = []
 
-    number = 0
-    for x in answers :
-        if number % 4 == 0 : 
-            a.extend(a)
-        if number % 7 == 0 : 
-            b.extend(b)
-        if number % 10 == 0 : 
-            c.extend(c)
-            
-        if x == a[number] :
-            temp.append(1)
-        if x == b[number] :
-            temp.append(2)
-        if x == c[number] :
-            temp.append(3)
-        number = number + 1 
-    
-    for i in temp:
-        try: count[i] += 1
-        except: count[i]=1
-    
-    if 
+    for idx, answer in enumerate(answers):
+        if answer == a[idx%len(a)]:
+            score[0] += 1
+        if answer == b[idx%len(b)]:
+            score[1] += 1
+        if answer == c[idx%len(c)]:
+            score[2] += 1
 
+    print(score)
 
-    print(count)
+    for idx, s in enumerate(score):
+        print(s)
+        if s == max(score):
+            result.append(idx+1)
 
-    answer = list(count.keys())
+    print(result)
 
-    print(answer)
+    return result
 
-    return answer
-
-solution([1, 3, 2, 4, 2])   
+solution([3,3,1,1,2,4,2,5,2])
